@@ -2,7 +2,7 @@
 utils/config.py
 
 # SCUT-FBP5500_v2 dataset
-SCUT-FBP5500_v2.1/*
+SCUT-FBP5500_v2.1/SCUT-FBP5500_v2/
 
 # images .npy
 dataset_npy/*
