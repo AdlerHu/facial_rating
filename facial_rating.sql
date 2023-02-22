@@ -1,3 +1,31 @@
+-- 建立存放 SCUT-FBP5500_v2 原始資料的表，只關注 rater、filename、rating 三個欄位
+CREATE TABLE `all_ratings` (
+  `rater` varchar(2),
+  `filename` varchar(15),
+  `rating` varchar(1)
+);
+
+-- 將資料從 csv 匯入 mysql 的參考指令
+LOAD DATA INFILE '/path/to/my_file.csv'
+INTO TABLE my_table
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+-- 每張照片的平均分數的表
+CREATE TABLE `avg_rating` (
+  `filename` varchar(15),
+  `avg_rating` float 
+);
+
+-- 用 DB 算出每張照片的平均分數，存起來供訓練模型用
+INSERT INTO `avg_rating` (`filename`, `avg_rating`)
+SELECT a.filename, ROUND(AVG(a.rating), 2)
+FROM `all_ratings` as a
+GROUP BY a.filename;
+
+-- 存放我的測試照片的表格
 CREATE TABLE my_face_rating(
 	`No` INT PRIMARY KEY AUTO_INCREMENT,
 	`smile` VARCHAR(5),
@@ -8,8 +36,3 @@ CREATE TABLE my_face_rating(
     `picture_done` VARCHAR(1),
     `rating` FLOAT
 );
-
-INSERT INTO `my_face_rating` (`smile`, `hair_style`, `beard`, `glasses`, `filename`, `picture_done`, `rating`) 
-VALUES ('不開心', '殺手', '小山羊鬍', '窄邊橢圓', '不開心_殺手_小山羊鬍_窄邊橢圓.jpg', '0', 2.5);
-
-UPDATE `my_face_rating` SET `rating` = 3.5 WHERE `filename` = '原始_原始_原始_原始.jpg';
