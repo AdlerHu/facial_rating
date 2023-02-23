@@ -27,12 +27,11 @@ GROUP BY a.filename;
 
 -- 存放我的測試照片的表格
 CREATE TABLE my_face_rating(
-	`No` INT PRIMARY KEY AUTO_INCREMENT,
 	`smile` VARCHAR(5),
     `hair_style` VARCHAR(5),
     `beard` VARCHAR(5),
     `glasses` VARCHAR(5),
-    `filename` VARCHAR(25),
+    `filename` VARCHAR(25) PRIMARY KEY,
     `picture_done` VARCHAR(1),
     `rating` FLOAT
 );
