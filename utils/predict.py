@@ -72,3 +72,22 @@ def predict(img_path):
     # print(f'prediction: {lv}, 贏過{p}%的人')
 
     return result, points
+
+
+def predict2(img_path, model):
+    
+    plt.rcParams['font.size'] = 9
+    plt.rcParams['figure.figsize'] = (9, 9)    
+
+    img = Image.open(img_path)
+    img_width, img_height, channels = 350, 350, 3
+    img = img.resize([img_width, img_height])
+    
+    test_x = keras.utils.img_to_array(img).reshape(img_height, img_width, channels)
+    test_x = test_x / 255
+    test_x = test_x.reshape((1,) + test_x.shape)
+    prediction = model.predict(test_x)
+
+    points = round(float(prediction[0][0]), 3)
+    
+    return points
