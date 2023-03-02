@@ -6,7 +6,7 @@ from PIL import Image
 
 
 # 用測試集資料驗證模型成果
-# def predict():
+# def verify():
 #     model = keras.models.load_model('03-0.27.h5')
 
 #     plt.rcParams['font.size'] = 9
@@ -29,10 +29,8 @@ from PIL import Image
 #     plt.show()
 
 
-# 
-def predict(img_path):
-    model = keras.models.load_model('model/21-0.12.h5')
-
+# 用先前訓練好的模型進行預測
+def predict(img_path, model):
     plt.rcParams['font.size'] = 9
     plt.rcParams['figure.figsize'] = (9, 9)    
 
@@ -45,8 +43,8 @@ def predict(img_path):
     test_x = test_x / 255
     test_x = test_x.reshape((1,) + test_x.shape)
 
-    # prediction = model.predict(test_x)
-    prediction = model(test_x, training=False)
+    prediction = model.predict(test_x)
+    # prediction = model(test_x, training=False)
 
     points = round(float(prediction[0][0]), 3)
     result = '美' if points > 3 else '醜'
@@ -72,22 +70,3 @@ def predict(img_path):
     # print(f'prediction: {lv}, 贏過{p}%的人')
 
     return result, points
-
-
-def predict2(img_path, model):
-    
-    plt.rcParams['font.size'] = 9
-    plt.rcParams['figure.figsize'] = (9, 9)    
-
-    img = Image.open(img_path)
-    img_width, img_height, channels = 350, 350, 3
-    img = img.resize([img_width, img_height])
-    
-    test_x = keras.utils.img_to_array(img).reshape(img_height, img_width, channels)
-    test_x = test_x / 255
-    test_x = test_x.reshape((1,) + test_x.shape)
-    prediction = model.predict(test_x)
-
-    points = round(float(prediction[0][0]), 3)
-    
-    return points

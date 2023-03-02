@@ -1,6 +1,6 @@
 import MySQLdb
 from utils.config import connect_db
-from utils.predict import predict2
+from utils.predict import predict
 from os import listdir
 from os.path import join
 import tensorflow as tf
@@ -46,7 +46,7 @@ def evaluate_faces(myface_dir, face_list, model):
     db, cursor = connect_db()
     for filename in face_list:
         fullpath = join(myface_dir, filename)
-        points = predict2(img_path=fullpath, model=model)
+        result, points = predict(img_path=fullpath, model=model)
         update_my_face_rating(cursor, points=points, filename=filename)
     cursor.close()
     db.close()
