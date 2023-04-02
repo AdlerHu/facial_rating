@@ -3,9 +3,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
  
-def predict(img_path):
-    model = keras.models.load_model('model/26-0.12.h5')
-
+def predict(model, img_path):
     plt.rcParams['font.size'] = 9
     plt.rcParams['figure.figsize'] = (9, 9)    
 
