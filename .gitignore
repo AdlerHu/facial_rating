@@ -127,3 +127,13 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# connect db
+utils/config.py
+
+# dataset
+dataset/SCUT-FBP5500_v2
+
+# dataset .npy
+dataset_npy/*.npy
+
