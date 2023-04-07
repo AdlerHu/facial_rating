@@ -13,6 +13,9 @@ mysqlclient = "*"
 tensorflow = "*"
 pillow = "*"
 matplotlib = "*"
+flask = "*"
+werkzeug = "*"
+opencv-python = "*"
 
 [dev-packages]
 
