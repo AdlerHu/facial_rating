@@ -82,7 +82,6 @@ def main(myface_dir, threading_number):
     # 等待線程完成
     for t in threads:
         t.join()
-
     print('Done')
 
 
