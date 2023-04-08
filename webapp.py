@@ -15,7 +15,7 @@ app.send_file_max_age_default = timedelta(seconds=5)
 model = load_model('model/26-0.12.h5')
 
 # 設定允許的圖片格式
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'JPG','jpeg','JPEG', 'PNG', 'bmp'])
+ALLOWED_EXTENSIONS = ('png', 'jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'bmp')
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
