@@ -17,17 +17,16 @@ model = load_model('model/26-0.12.h5')
 # 設定允許的圖片格式
 ALLOWED_EXTENSIONS = ('png', 'jpg', 'JPG', 'jpeg', 'JPEG', 'PNG', 'bmp')
 
-def allowed_file(filename):
+def is_allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-# route
 @app.route('/', methods=['POST', 'GET'])
 def upload():
     if request.method == 'POST':
         f = request.files['file']
 
         # 如果用戶上傳了不允許的圖片格式，在瀏覽器顯示錯誤訊息
-        if not (f and allowed_file(f.filename)):
+        if not (f and is_allowed_file(f.filename)):
             return "Upload image format is limited to png, JPG, jpeg, JPEG, JPG or bmp."
 
         user_input = request.form.get("name")
