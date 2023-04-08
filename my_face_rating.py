@@ -59,6 +59,7 @@ def update_my_face_rating(cursor, points, filename):
 
 def main(myface_dir, threading_number):
 
+    # 先讀取好預測模型，每個線程都可以使用這個模型，不需要每個線程都要讀取
     model = load_model('model/26-0.12.h5')
 
     # 建立我所有照片的表
