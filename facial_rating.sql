@@ -26,7 +26,7 @@ CREATE TABLE avg_rating (
   avg_rating FLOAT
 );
 
-CREATE TABLE all_face_rating (
+CREATE TABLE all_face_ratings (
   filename VARCHAR(12),  
   rating INT
 );
