@@ -27,7 +27,7 @@ def image_to_ndarray():
     # 顏色信息通常由三個顏色通道組成，即紅色、綠色和藍色（RGB），每個通道的取值範圍為0-255。 channels就是指圖像的顏色通道數，對於RGB格式的圖像，通常是3。
     img_width, img_height, channels = 350, 350, 3
     # 資料集圖片目錄
-    img_dir = '/home/adlerhu/facial_rating/dataset/SCUT-FBP5500_v2/Images/'
+    img_dir = '/home/adlerhu/Documents/GitHub/facial_rating/dataset/SCUT-FBP5500_v2/Images/'
     # 資料集總共有 5500 張圖片
     nb_samples = len(os.listdir(img_dir))
     input_shape = (img_width, img_height, channels)
