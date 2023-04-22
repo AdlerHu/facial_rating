@@ -4,8 +4,6 @@ from random import randint
 import matplotlib.pyplot as plt
 import numpy as np
 
-matplotlib.use('TkAgg')
-
 
 # 用測試集資料驗證模型成果
 def verify():
